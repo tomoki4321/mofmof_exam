@@ -25,7 +25,29 @@
   <%= @property.remarks %>
 </p>
 
+
 <div class="line"></div>
+<%count=1%>
+<%@nearests.each do |nearest|%>
+  <h3><%="最寄駅#{count}"%></h3>
+  <%count+=1%>
+  <p>
+    <strong>路線名:</strong>
+    <%=nearest.route%>
+  </p>
+
+  <p>
+    <strong>駅名:</strong>
+    <%=nearest.station%>
+  </p>
+
+  <p>
+    <strong>徒歩:</strong>
+    <%=nearest.walk%>
+  </p>
+
+<%end%>
+
 
 
 

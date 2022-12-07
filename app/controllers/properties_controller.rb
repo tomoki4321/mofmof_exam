@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    
+    @nearests=@property.nearests
   end
 
   def new
