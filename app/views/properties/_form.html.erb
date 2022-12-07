@@ -1,0 +1,65 @@
+<%= form_with(model: property, local: true) do |form| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+        <% property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%=form.label :name,"物件名"%>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%=form.label :rent,"賃料"%>
+    <%= form.text_field :rent %>円
+  </div>
+
+  <div class="field">
+    <%=form.label :address,"住所"%>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%=form.label :age,"築年数"%>
+    <%= form.text_field :age %>年
+  </div>
+
+  <div class="field">
+    <%=form.label :remarks,"備考"%>
+    <%= form.text_area :remarks %>
+  </div>
+
+  <div class="line"></div>
+
+  <%count=1%>
+  <%=form.fields_for :nearests do |nearest|%>
+    <h3><%="最寄駅#{count}"%></h3>
+    <%count+=1%>
+    <%=nearest.label :route,"路線名"%>
+    <%=nearest.text_field :route%>
+
+    <%=nearest.label :station,"駅名"%>
+    <%=nearest.text_field :station%>
+
+    <%=nearest.label :walk,"徒歩"%>
+    <%=nearest.text_field :walk%>分
+    <br>
+  <%end%>
+
+  <div class="actions">
+    <%= form.submit "登録する" %>
+  </div>
+<% end %>
+
+<style>
+.line{
+  border-bottom:solid 1px #696969;
+}
+</style>
