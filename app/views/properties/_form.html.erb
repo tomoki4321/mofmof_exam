@@ -38,7 +38,10 @@
 
   <div class="line"></div>
 
+  <%count=1%>
   <%=form.fields_for :nearests do |nearest|%>
+    <h3><%="最寄駅#{count}"%></h3>
+    <%count+=1%>
     <%=nearest.label :route,"路線名"%>
     <%=nearest.text_field :route%>
 
@@ -47,6 +50,7 @@
 
     <%=nearest.label :walk,"徒歩"%>
     <%=nearest.text_field :walk%>分
+    <br>
   <%end%>
 
   <div class="actions">

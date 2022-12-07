@@ -6,6 +6,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -14,6 +15,7 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @property.nearests.build
   end
 
   def create
@@ -33,19 +35,16 @@ class PropertiesController < ApplicationController
     end
   end
 
-  # DELETE /properties/1 or /properties/1.json
   def destroy
     @property.destroy
     redirect_to properties_path notice:"削除しました！"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_property
       @property = Property.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def property_params
       params.require(:property).permit(:name, :rent, :address, :age, :remarks,nearests_attributes:[:id,:route,:station,:walk])
     end
